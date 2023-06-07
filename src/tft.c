@@ -15,7 +15,7 @@
 #define RST_PIN 7
 
 #define SPI_PORT spi0
-#define BAUDRATE (75000 * 1000)
+#define BAUDRATE (2 * 10 * 1000 * 1000)
 
 #define TFTCMD_NOP     0x00
 #define TFTCMD_SWRESET 0x01
@@ -137,20 +137,20 @@ void tft_test() {
 	for (i = 0; i < 240 * 320; i++) {
 		row = i / 240;
 		if (i < 240 * 320 / 4) {
-			color = 0x0000;
+			color = 0xF800;
 		} else if (i < 240 * 320 / 4 * 2) {
-			color = 0xFFFF;
+			color = 0xFD20;
 		} else if (i < 240 * 320 / 4 * 3) {
-			color = 0xF81F;
+			color = 0xFFE0;
 		} else {
 			color = 0x07E0;
 		}
-		color = (color >> 8) | (color << 8);
 		buf[i] = color;
 	}
 
 	tft_call_command(TFTCMD_RAMWR);
 	tft_write_data((void *)buf, 240 * 320 * 2);
+
 	gpio_put(PICO_DEFAULT_LED_PIN, 1);
 	sleep_ms(250);
 	gpio_put(PICO_DEFAULT_LED_PIN, 0);

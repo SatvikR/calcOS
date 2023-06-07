@@ -9,8 +9,6 @@ int main() {
     	gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 	while (true) {
 		tft_test();
-		sleep_ms(100);
-		printf("is this doing anything...");
 	}
 	return 0;
 }
