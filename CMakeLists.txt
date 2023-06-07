@@ -12,11 +12,20 @@ pico_sdk_init()
 
 set(SOURCES
 	"src/main.c"
+	"src/tft.c"
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+set(HEADERS
+	"src/tft.h"
+)
 
-target_link_libraries(${PROJECT_NAME} pico_stdlib)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
+target_link_libraries(${PROJECT_NAME}
+	pico_stdlib
+	hardware_spi
+)
+
+pico_enable_stdio_usb(${PROJECT_NAME} 1)
+pico_enable_stdio_uart(${PROJECT_NAME} 0)
 pico_add_extra_outputs(${PROJECT_NAME})
-
