@@ -33,6 +33,4 @@ void tft_set_write_area(uint16_t x_start, uint16_t x_end, uint16_t y_start,
 /* Flush the framebuffer to the screen. */
 void tft_flush();
 
-void tft_test();
-
 #endif
