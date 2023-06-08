@@ -7,8 +7,7 @@
 
 int main()
 {
-	/* Currently just a test program that draws some shapes using the
-   TFT api. */
+	/* Currently just a test program that draws some shapes. */
 	tft_init();
 	tft_flush();
 
